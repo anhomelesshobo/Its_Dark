@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Darkman007 - Sad song.wav-e77925e4ceb30d9e6f0be8129f76030c.sample"
+
+[deps]
+
+source_file="res://Sounds/Darkman007 - Sad song.wav"
+dest_files=[ "res://.import/Darkman007 - Sad song.wav-e77925e4ceb30d9e6f0be8129f76030c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
