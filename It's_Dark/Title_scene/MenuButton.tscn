@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Themes/ButtonStyle.tres" type="StyleBox" id=1]
+[ext_resource path="res://Themes/ButtonFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Title_scene/MenuButton.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.709804, 0.0980392, 0.0980392, 1 )
+border_color = Color( 0.968627, 0.937255, 0.945098, 1 )
+corner_radius_top_left = 10
+shadow_color = Color( 0.933333, 0.286275, 0.235294, 0.6 )
+shadow_size = 5
+
+[node name="MenuButton" type="Button"]
+margin_right = 120.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 120, 25 )
+size_flags_horizontal = 2
+custom_styles/hover = SubResource( 1 )
+custom_styles/normal = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 5.47028
+margin_bottom = -0.529724
+custom_fonts/font = ExtResource( 2 )
+text = "New Game"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

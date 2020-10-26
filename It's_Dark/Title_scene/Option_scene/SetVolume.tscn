@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Themes/ButtonFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Title_scene/Option_scene/SetMusic.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.819608, 0.752941, 0.0392157, 0 )
+border_width_left = 7
+border_width_top = 9
+border_color = Color( 1, 1, 1, 1 )
+corner_detail = 15
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.870588, 0.54902, 0.0470588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.870588, 0.54902, 0.0470588, 1 )
+
+[node name="SetSliders" type="HBoxContainer"]
+margin_top = 4.0
+margin_right = 270.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 44.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 1 )
+text = "Label"
+
+[node name="Slider" type="HSlider" parent="."]
+margin_left = 48.0
+margin_right = 270.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 0, 10 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
+min_value = -38.0
+max_value = 0.0
+value = -19.0
+rounded = true
+ticks_on_borders = true
+[connection signal="value_changed" from="Slider" to="." method="_on_Slider_value_changed"]
