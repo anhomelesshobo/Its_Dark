@@ -15,8 +15,8 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 160.616, 90.6684 )
-scale = Vector2( 0.342962, 0.226017 )
+position = Vector2( 158.096, 89.0935 )
+scale = Vector2( 0.359254, 0.231578 )
 texture = ExtResource( 4 )
 
 [node name="CenterRow" type="HBoxContainer" parent="."]

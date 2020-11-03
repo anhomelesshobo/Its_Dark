@@ -31,7 +31,6 @@ GlobalMusic="*res://Sounds/GlobalMusic.tscn"
 
 window/size/width=320
 window/size/height=180
-window/size/resizable=false
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
@@ -118,6 +117,10 @@ down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[physics]
+
+2d/default_gravity=0
 
 [rendering]
 
