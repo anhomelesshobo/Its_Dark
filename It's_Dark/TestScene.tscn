@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Object/Barrel.tscn" type="PackedScene" id=2]
+
+[node name="TestScene" type="YSort"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 56 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 0, 0, 0, 176, 320, 176, 320, 0, 296, 32, 304, 64, 304, 128, 280, 160, 240, 152, 208, 160, 184, 136, 120, 144, 80, 160, 40, 144, 24, 112, 40, 80, 24, 48, 16, 8 )
+
+[node name="Barrel" parent="." instance=ExtResource( 2 )]
+position = Vector2( 72, 40 )
+
+[node name="Barrel2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 112, 80 )
+
+[node name="Barrel3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 208, 80 )
+
+[node name="Barrel4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 240, 48 )
