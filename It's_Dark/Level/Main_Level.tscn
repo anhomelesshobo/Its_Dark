@@ -7,11 +7,12 @@
 
 [node name="Main_Level" type="YSort"]
 script = ExtResource( 1 )
+num_rooms = 8
 
 [node name="TileMap" type="TileMap" parent="."]
-show_behind_parent = true
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
+cell_clip_uv = true
 format = 1
 
 [node name="Rooms" type="Node" parent="."]
@@ -23,11 +24,13 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 10, 10 )
 
 [node name="FadeIn" parent="Camera2D" instance=ExtResource( 4 )]
 margin_left = -160.0
 margin_top = -104.0
 margin_right = 176.0
 margin_bottom = 112.0
+grow_vertical = 2
 color = Color( 0, 0, 0, 1 )
 [connection signal="fade_finished" from="Camera2D/FadeIn" to="." method="_on_FadeIn_fade_finished"]

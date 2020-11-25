@@ -1,16 +1,19 @@
 extends Node2D
 
 var Room = preload("res://Level/Room.tscn")
+var Portal = preload("res://Level/Portal.tscn")
+var Turret = preload("res://Level/Turret.tscn")
 onready var player = $Player
 onready var Map = $TileMap
 
-
+var random = RandomNumberGenerator.new()
 var tile_size = 16
-var num_rooms = 25
+export var num_rooms = 25
+var num_turret = 10
 var min_size = 7
 var max_size = 10
 var hspread = 100
-var vspread = 2000
+var vspread = 1000
 var cull = 0.4
 
 
@@ -34,6 +37,7 @@ func make_rooms():
 		var h = min_size + randi() % (max_size - min_size)
 		r.make_room(pos, Vector2(w, h) * tile_size)
 		$Rooms.add_child(r)
+
 	# wait for movement to stop
 	yield(get_tree().create_timer(1.1), 'timeout')
 	# cull rooms
@@ -72,7 +76,7 @@ func _draw():
 		
 func _process(delta):
 	update()
-
+	
 
 #func _input(event):
 	#if event.is_action_pressed('ui_select'):
@@ -119,6 +123,7 @@ func make_map():
 	Map.clear()
 	find_start_room()
 	find_end_room()
+	place_turret()
 	
 	#carve rooms
 	var corridors = [] #One corridor per connection
@@ -179,7 +184,24 @@ func find_end_room():
 			end_room = room
 			max_x = room.position.x
 
-
+func place_turret():
+	var current_num_turret = 0
+	for room in $Rooms.get_children():
+		if room == end_room:
+			var portal = Portal.instance()
+			portal.position = end_room.position
+			get_parent().add_child(portal)
+		if room != start_room && room != end_room:
+			random.randomize()
+			var n = random.randi_range(1, 2)		
+			if n == 2:
+				var t = Turret.instance()
+				t.position = room.position
+				t.ShootTimer
+				get_parent().add_child(t)
+				if current_num_turret != 10:
+					current_num_turret += 1
+		
 func _on_FadeIn_fade_finished():
 	$Camera2D/FadeIn.hide()
 	pass # Replace with function body.

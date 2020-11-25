@@ -1,0 +1,114 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Sprites/Enemy/slime-orange.png" type="Texture" id=1]
+[ext_resource path="res://Hitboxes and Hurtboxes/Hurtbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Enemy/Slime.gd" type="Script" id=3]
+[ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/Enemy/PlayerDetectionZone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hitboxes and Hurtboxes/Hitbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SoftCollision.tscn" type="PackedScene" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 24 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Move",
+"speed": 4.0
+} ]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 5.9058
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 7.41372
+height = 0.0
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 68.2863
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 2.91772
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 3.8108
+
+[node name="Slime" type="KinematicBody2D"]
+collision_layer = 128
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -8 )
+frames = SubResource( 5 )
+animation = "Move"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -2.5 )
+shape = SubResource( 6 )
+
+[node name="Stats" parent="." instance=ExtResource( 4 )]
+max_health = 4
+
+[node name="Hurtbox" parent="." instance=ExtResource( 2 )]
+visible = false
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, -2.5 )
+shape = SubResource( 7 )
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+modulate = Color( 1, 1, 1, 0.278431 )
+self_modulate = Color( 1, 1, 1, 0.407843 )
+shape = SubResource( 8 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 6 )]
+visible = false
+position = Vector2( -0.148651, 0.743256 )
+collision_layer = 0
+collision_mask = 2147483712
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, -2.5 )
+shape = SubResource( 9 )
+
+[node name="SoftCollision" parent="." instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+position = Vector2( 0, -2.37842 )
+shape = SubResource( 10 )
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
+[editable path="Hurtbox"]
+
+[editable path="PlayerDetectionZone"]
+
+[editable path="Hitbox"]
+
+[editable path="SoftCollision"]

@@ -26,13 +26,13 @@ default_bus_layout="res://Sounds/default_bus_layout.tres"
 [autoload]
 
 GlobalMusic="*res://Sounds/GlobalMusic.tscn"
+PlayerStats="*res://Player/PlayerStats.tscn"
 
 [display]
 
 window/size/width=320
 window/size/height=180
 window/size/resizable=false
-window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
@@ -120,6 +120,25 @@ down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
+attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="environment"
+2d_physics/layer_2="player"
+2d_physics/layer_3="turrets"
+2d_physics/layer_4="turret_visiblity"
+2d_physics/layer_5="bullets"
+2d_physics/layer_6="EnemyHurtbox"
+2d_physics/layer_7="PlayerHurtbox"
+2d_physics/layer_8="Enemy"
+2d_physics/layer_9="SoftCollisions"
+2d_physics/layer_10="EndGame"
 
 [physics]
 
