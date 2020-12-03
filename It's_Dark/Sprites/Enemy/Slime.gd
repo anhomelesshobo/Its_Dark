@@ -24,7 +24,7 @@ onready var hurtbox = $Hurtbox
 onready var softColission = $SoftCollision
 
 func _physics_process(delta):
-	knockback = knockback.move_toward(Vector2.ZERO, 300 * delta)
+	knockback = knockback.move_toward(Vector2.ZERO, 175 * delta)
 	knockback = move_and_slide(knockback)
 	
 	match state:

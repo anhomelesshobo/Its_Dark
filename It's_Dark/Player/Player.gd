@@ -11,7 +11,7 @@ enum {
 
 var state = MOVE
 var velocity = Vector2.ZERO
-var stats = PlayerStats
+onready var stats = PlayerStats
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -66,5 +66,9 @@ func attack_animation_finished():
 
 func _on_Hurtbox_area_entered(area):
 	stats.health -= 1;
+	if stats.health == 0:
+		stats.health = 10
+		get_tree().change_scene("res://Title_scene/MainMenu.tscn")
+		
 	hurtbox.start_invincibility(0.5)
 	hurtbox.create_hit_effect()

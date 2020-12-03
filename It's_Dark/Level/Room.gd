@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-
+#single room that we can instanciate after
 var size
 
 func make_room(_pos, _size):

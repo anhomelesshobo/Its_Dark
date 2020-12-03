@@ -1,5 +1,5 @@
 extends AnimatedSprite
-
+#effects
 func _ready():
 	connect("animation_finished", self, "_on_animation_finished")
 	play("Animate")

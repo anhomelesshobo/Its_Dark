@@ -2,9 +2,13 @@ extends Node2D
 
 var Room = preload("res://Level/Room.tscn")
 var Portal = preload("res://Level/Portal.tscn")
-var Turret = preload("res://Level/Turret.tscn")
+onready var Turret = preload("res://Level/Turret.tscn")
+onready var Slime = preload("res://Sprites/Enemy/Slime.tscn")
 onready var player = $Player
 onready var Map = $TileMap
+onready var Shoottime = Timer.new()
+onready var Background = $Background
+
 
 var random = RandomNumberGenerator.new()
 var tile_size = 16
@@ -24,10 +28,12 @@ var play_mode = false
 
 #prim's algorithm
 func _ready():
+	Background.play("Background")
 	randomize()
 	make_rooms()
 	
-
+func _physics_process(delta):
+	update()
 # generateur procedural pour les rooms
 func make_rooms():
 	for i in range(num_rooms):
@@ -78,16 +84,7 @@ func _process(delta):
 	update()
 	
 
-#func _input(event):
-	#if event.is_action_pressed('ui_select'):
-	#	for n in $Rooms.get_children():
-	#		n.queue_free()
-	#	path = null
-	#	make_rooms()
-	#	Map.clear()
-	#if event.is_action_pressed('ui_focus_next'):
-	#	make_map()
-	#	Map.update_bitmask_region()
+
 
 func find_mst(nodes):
 	# Prim's algorithm
@@ -193,11 +190,17 @@ func place_turret():
 			get_parent().add_child(portal)
 		if room != start_room && room != end_room:
 			random.randomize()
-			var n = random.randi_range(1, 2)		
+			var n = random.randi_range(1, 2)	
+			if n == 1:
+				var d = Slime.instance()
+				var f = Slime.instance()
+				d.position = room.position - Vector2(-40,-40)
+				f.position = room.position - Vector2(40,40)
+				get_parent().add_child(d)
+				get_parent().add_child(f)
 			if n == 2:
 				var t = Turret.instance()
 				t.position = room.position
-				t.ShootTimer
 				get_parent().add_child(t)
 				if current_num_turret != 10:
 					current_num_turret += 1

@@ -56,7 +56,7 @@ script = ExtResource( 2 )
 scale = Vector2( 0.947211, 0.809974 )
 frames = SubResource( 9 )
 animation = "EndPortal"
-frame = 5
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

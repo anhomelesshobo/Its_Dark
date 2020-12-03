@@ -7,8 +7,8 @@
 [ext_resource path="res://Hitboxes and Hurtboxes/Hurtbox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 2.69404
-height = 2.27301
+radius = 3.67024
+height = 0.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "AttackDown"
@@ -410,12 +410,12 @@ graph_offset = Vector2( 0, 123.953 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=33]
 
 [sub_resource type="CapsuleShape2D" id=34]
-radius = 5.84438
+radius = 6.43432
 height = 13.4872
 
 [sub_resource type="CapsuleShape2D" id=35]
-radius = 3.625
-height = 7.75
+radius = 5.63649
+height = 14.3697
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -427,7 +427,7 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 1 )
 vframes = 5
 hframes = 8
-frame = 27
+frame = 37
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.25, -1.75 )
@@ -450,12 +450,12 @@ tree_root = SubResource( 32 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 33 )
 parameters/Attack/blend_position = Vector2( 0, 1 )
-parameters/Idle/blend_position = Vector2( 0, 1 )
+parameters/Idle/blend_position = Vector2( 0.0183673, 0.212121 )
 parameters/Run/blend_position = Vector2( 0, 1 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
 position = Vector2( 0, -10 )
-rotation = 1.5708
+rotation = 3.14159
 
 [node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource( 3 )]
 position = Vector2( 9, 0 )

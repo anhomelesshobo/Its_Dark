@@ -14,11 +14,12 @@ var target
 var can_shoot = true
 
 func _ready():
+	fire_rate = 0.7
 	$Sprite.self_modulate = Color(0.2, 0, 0)
 	var shape = CircleShape2D.new()
 	shape.radius = detect_radius
 	$Visibility/CollisionShape2D.shape = shape
-	$ShootTimer.wait_time = fire_rate
+	ShootTimer.wait_time = fire_rate
 	
 
 func _physics_process(delta):
@@ -44,10 +45,9 @@ func shoot(pos):
 	b.start(global_position, a + rand_range(-0.05, 0.05))
 	get_parent().add_child(b)
 	can_shoot = false
-	$ShootTimer.start()
+	ShootTimer.start()
 
 func _draw():
-	draw_circle(Vector2(), detect_radius, vis_color)
 	if target:
 		draw_circle((hit_pos - position).rotated(-rotation), 2, laser_color)
 		draw_line(Vector2(), (hit_pos - position).rotated(-rotation), laser_color)

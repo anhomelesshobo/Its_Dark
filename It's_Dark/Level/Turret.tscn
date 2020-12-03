@@ -32,6 +32,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visibility"]
 
 [node name="ShootTimer" type="Timer" parent="."]
+autostart = true
 [connection signal="body_entered" from="Visibility" to="." method="_on_Visibility_body_entered"]
 [connection signal="body_exited" from="Visibility" to="." method="_on_Visibility_body_exited"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
