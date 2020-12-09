@@ -43,7 +43,7 @@ position = Vector2( 240, 48 )
 position = Vector2( 248, 112 )
 
 [node name="AnimatedSprite" parent="Slime" index="0"]
-frame = 3
+frame = 2
 
 [node name="Slime2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 256, 24 )
@@ -60,7 +60,7 @@ fire_rate = 0.28
 position = Vector2( 168, 96 )
 
 [node name="AnimatedSprite" parent="Portal" index="0"]
-frame = 6
+frame = 2
 
 [editable path="Slime"]
 

@@ -60,7 +60,6 @@ MAX_SPEED = 65
 position = Vector2( 0, -8 )
 frames = SubResource( 5 )
 animation = "Move"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

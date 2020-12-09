@@ -46,7 +46,7 @@ func make_rooms():
 
 	# wait for movement to stop
 	yield(get_tree().create_timer(1.1), 'timeout')
-	# cull rooms
+	# cull rooms// Enlever une partie des rooms générées 
 	var room_positions = []
 	for room in $Rooms.get_children():
 		if randf() < cull:
